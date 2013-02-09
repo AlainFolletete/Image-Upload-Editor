@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Example - Image Upload Editor</title>
+		<link rel="stylesheet" href="css/jcrop/jquery.Jcrop.min.css">
+		<link rel="stylesheet" href="css/imageUploadEditor.css">
+	</head>
+	<body>
+		<h1>Upload image</h1>
+
+		<div id="uploader">
+			<p id="progress"></p>
+			<a id="browse" href="javascript:;">Browse</a>
+		</div>
+		<hr />
+
+		<div id="result" style="display: none;">
+			<div class="row">
+				<div class="block">
+					<h2>Original</h2>
+					<ul class="options">
+						<li class="last"><a id="test" href="#">Reset crop</a></li>
+					</ul>
+					<div id="original" class="image-box"></div>
+				</div>
+
+				<div class="block">
+					<h2>Preview</h2>
+					<ul class="options">
+						<li><a class="rotate" href="#" data-direction="left">Rotate left</a></li>
+						<li><a class="rotate" href="#" data-direction="right">Rotate right</a></li>
+						<li class="last"><a class="rotate-img" href="#" data-direction="reset">Reset rotation</a></li>
+					</ul>
+					<div id="preview" class="image-box"></div>
+				</div>
+			</div>
+
+			<button id="send">Apply</button>
+		</div>
+
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script type="text/javascript" src="js/plupload/plupload.js"></script>
+		<script type="text/javascript" src="js/plupload/plupload.html5.js"></script>
+		<script type="text/javascript" src="js/jcrop/jquery.Jcrop.min.js"></script>
+		<script type="text/javascript" src="js/imageUploadEditor.js"></script>
+	</body>
+</html>
