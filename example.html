@@ -43,5 +43,14 @@
 		<script type="text/javascript" src="js/plupload/plupload.html5.js"></script>
 		<script type="text/javascript" src="js/jcrop/jquery.Jcrop.min.js"></script>
 		<script type="text/javascript" src="js/imageUploadEditor.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				imageUploadEditor.init();
+
+				imageUploadEditor.bind('uploadComplete', function() {
+					$('#result').show();
+				});
+			});
+		</script>
 	</body>
 </html>

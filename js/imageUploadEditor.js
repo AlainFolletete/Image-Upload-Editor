@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * Copyright © 2013 - Alain Folletete
+ * Copyright © 2013 - Alain Folletete - v1.0
  * @link http://github.com/AlainFolletete
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
@@ -239,11 +239,3 @@ var imageUploadEditor = {
 		uploadComplete: function() {}
 	}
 };
-
-$(function() {
-	imageUploadEditor.init();
-
-	imageUploadEditor.bind('uploadComplete', function() {
-		$('#result').show();
-	});
-});
