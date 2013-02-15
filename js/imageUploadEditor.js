@@ -221,8 +221,8 @@ var imageUploadEditor = {
 				height: Math.round(ry * this.bounds.y) + 'px',
 				marginLeft: '-' + Math.round(rx * coords.x) + 'px',
 				marginTop: '-' + Math.round(ry * coords.y) + 'px',
-				maxWidth: '',
-				maxHeight: ''
+				maxWidth: 'none',
+				maxHeight: 'none'
 			});
 
 			// Callback
