@@ -86,8 +86,8 @@ var imageUploadEditor = {
 			$('#preview-container').append(
 				$('<img />')
 					.attr('src', imageUploadEditor.image.file_uri)
-					.css('max-width', '300px')
-					.css('max-height', '300px')
+					.css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px')
+					.css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px')
 			);
 
 			// Init Jcrop
@@ -102,7 +102,7 @@ var imageUploadEditor = {
 				imageUploadEditor.resetJcrop();
 
 				$('#preview-container').css('width', '').css('height', '').css('margin', '0');
-				$(imageUploadEditor.conf.preview_block+' img').attr('style', '').css('max-width', '300px').css('max-height', '300px');
+				$(imageUploadEditor.conf.preview_block+' img').attr('style', '').css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px').css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px');
 			}
 
 			imageUploadEditor.uploader.start();
@@ -164,7 +164,7 @@ var imageUploadEditor = {
 			imageUploadEditor.jcrop_api.release();
 
 			//
-			$(imageUploadEditor.conf.preview_block+' img').attr('style', '').css('max-width', '300px').css('max-height', '300px');
+			$(imageUploadEditor.conf.preview_block+' img').attr('style', '').css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px').css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px');
 			$('#preview-container').css('width', '').css('height', '').css('margin', '0');
 		});
 
@@ -209,7 +209,7 @@ var imageUploadEditor = {
 			$('#preview-container').css({
 				width: Math.ceil(innerWidth) + 'px',
 				height: Math.ceil(innerHeight) + 'px',
-				marginLeft: (300 - innerWidth) / 2 + 'px',
+				marginLeft: ($(imageUploadEditor.conf.preview_block).width() - innerWidth) / 2 + 'px',
 				overflow: 'hidden'
 			});
 
