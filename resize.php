@@ -19,15 +19,8 @@
 // Step 0: Load image
 $imagePath = realpath(dirname(__FILE__).'/'.$_POST['file']);
 
-// Security check
-if ($imagePath == false || strpos($imagePath, dirname(__FILE__).'/uploads/') === false) {
-	die(json_encode(array(
-		'status' => 'KO',
-		'error' => 'File not found !'
-	)));
-}
-
-if (!file_exists($imagePath)) {
+// Security check and check if file exists
+if ($imagePath == false || strpos($imagePath, dirname(__FILE__).'/uploads/') === false || !file_exists($imagePath)) {
 	die(json_encode(array(
 		'status' => 'KO',
 		'error' => 'File not found !'
