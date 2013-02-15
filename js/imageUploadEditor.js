@@ -188,7 +188,7 @@ var imageUploadEditor = {
 					file: imageUploadEditor.image.file_uri
 				}
 			}).done(function( msg ) {
-				document.location.href = imageUploadEditor.image.file_uri;
+				imageUploadEditor.event.imageSaved();
 			});
 
 		});
@@ -236,6 +236,9 @@ var imageUploadEditor = {
 
 	event: {
 		updatePreview: function() {},
-		uploadComplete: function() {}
+		uploadComplete: function() {},
+		imageSaved: function() {
+			document.location.href = imageUploadEditor.image.file_uri;
+		}
 	}
 };
