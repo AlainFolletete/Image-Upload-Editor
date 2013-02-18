@@ -36,8 +36,10 @@ var imageUploadEditor = {
 
 		resize_url: 'resize.php',
 		jcrop: {
+			keySupport: false,
 			onChange: function(coords) { imageUploadEditor.updatePreview(coords); },
-			onSelect: function(coords) { imageUploadEditor.updatePreview(coords); }
+			onSelect: function(coords) { imageUploadEditor.updatePreview(coords); },
+			onRelease: function() { imageUploadEditor.releaseCrop(); }
 		},
 		uploader: {
 			runtimes : 'html5',
@@ -162,10 +164,6 @@ var imageUploadEditor = {
 
 			// Relase crop selection
 			imageUploadEditor.jcrop_api.release();
-
-			//
-			$(imageUploadEditor.conf.preview_block+' img').attr('style', '').css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px').css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px');
-			$('#preview-container').css('width', '').css('height', '').css('margin', '0');
 		});
 
 		// Send
@@ -228,6 +226,12 @@ var imageUploadEditor = {
 			// Callback
 			imageUploadEditor.event.updatePreview();
 		}
+	},
+
+	releaseCrop: function() {
+		// Reset preview image
+		$(imageUploadEditor.conf.preview_block+' img').attr('style', '').css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px').css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px');
+		$('#preview-container').css('width', '').css('height', '').css('margin', '0');
 	},
 
 	bind: function(key, callback) {
