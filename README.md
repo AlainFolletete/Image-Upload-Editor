@@ -28,8 +28,10 @@ Soon !
 
             resize_url: 'resize.php',
             jcrop: {
+                keySupport: false,
                 onChange: function(coords) { imageUploadEditor.updatePreview(coords); },
-                onSelect: function(coords) { imageUploadEditor.updatePreview(coords); }
+                onSelect: function(coords) { imageUploadEditor.updatePreview(coords); },
+                onRelease: function() { imageUploadEditor.releaseCrop(); }
             },
             uploader: {
                 runtimes : 'html5',
