@@ -47,7 +47,6 @@ var imageUploadEditor = {
 			container: 'uploader',
 			max_file_size : '10mb',
 			url : 'upload.php',
-			flash_swf_url : 'js/plupload/plupload.flash.swf',
 			multi_selection: false,
 			filters : [
 				{title : "Image files", extensions : "jpg,gif,png"}
