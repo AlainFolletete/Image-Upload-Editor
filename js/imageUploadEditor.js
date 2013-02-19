@@ -35,6 +35,7 @@ var imageUploadEditor = {
 		progress_text: '#progress',
 
 		resize_url: 'resize.php',
+		resize_data: {},
 		jcrop: {
 			keySupport: false,
 			onChange: function(coords) { imageUploadEditor.updatePreview(coords); },
@@ -169,10 +170,7 @@ var imageUploadEditor = {
 		$(imageUploadEditor.conf.send_button).click(function() {
 			var selection = imageUploadEditor.jcrop_api.tellSelect();
 
-			$.ajax({
-				type: "POST",
-				url: imageUploadEditor.conf.resize_url,
-				data: {
+			var data = $.extend({}, {
 					crop: {
 						x: selection.x,
 						x2: selection.x2,
@@ -183,8 +181,15 @@ var imageUploadEditor = {
 					},
 					angle: imageUploadEditor.rotation,
 					file: imageUploadEditor.image.file_uri
-				}
-			}).done(function( msg ) {
+				},
+				imageUploadEditor.conf.resize_data
+			);
+
+			$.ajax({
+				type: "POST",
+				url: imageUploadEditor.conf.resize_url,
+				data: data
+			}).done(function( result ) {
 				imageUploadEditor.event.imageSaved();
 			});
 
