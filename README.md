@@ -27,6 +27,7 @@ Soon !
             progress_text: '#progress',
 
             resize_url: 'resize.php',
+            resize_data: {},
             jcrop: {
                 keySupport: false,
                 onChange: function(coords) { imageUploadEditor.updatePreview(coords); },
