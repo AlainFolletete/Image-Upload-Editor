@@ -10,7 +10,10 @@
 
 		<div id="uploader">
 			<p id="progress"></p>
-			<a id="browse" href="#">Browse</a>
+			<ul class="options">
+				<li><a id="browse" href="#">Browse</a></li>
+				<li class="last"><a id="reset" href="#">Reset editor</a></li>
+			</ul>
 		</div>
 		<hr />
 
@@ -49,6 +52,10 @@
 
 				imageUploadEditor.bind('uploadComplete', function() {
 					$('#result').show();
+				});
+
+				imageUploadEditor.bind('resetEditor', function() {
+					$('#result').hide();
 				});
 			});
 		</script>

@@ -28,6 +28,7 @@ var imageUploadEditor = {
 		reset_crop_button: '#reset-crop',
 		rotate_button: '.rotate', // It's a class, many buttons
 		send_button: '#send',
+		reset_editor_button: '#reset',
 
 		original_block: '#original',
 		preview_block: '#preview',
@@ -84,13 +85,11 @@ var imageUploadEditor = {
 		this.uploader.bind('FileUploaded', function(up, file, response) {
 			imageUploadEditor.image = $.parseJSON(response.response);
 
-			$(imageUploadEditor.conf.original_block).append($('<img />').attr('src', imageUploadEditor.image.file_uri));
-			$('#preview-container').append(
-				$('<img />')
-					.attr('src', imageUploadEditor.image.file_uri)
-					.css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px')
-					.css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px')
-			);
+			imageUploadEditor.initDom();
+			$(imageUploadEditor.conf.original_block+' img').attr('src', imageUploadEditor.image.file_uri);
+			$('#preview-container img').attr('src', imageUploadEditor.image.file_uri)
+				.css('max-width', $(imageUploadEditor.conf.preview_block).width()+'px')
+				.css('max-height', $(imageUploadEditor.conf.preview_block).height()+'px');
 
 			// Init Jcrop
 			imageUploadEditor.initJcrop();
@@ -166,6 +165,14 @@ var imageUploadEditor = {
 			imageUploadEditor.jcrop_api.release();
 		});
 
+		// Reset editor
+		$(imageUploadEditor.conf.reset_editor_button).click(function(e) {
+			e.preventDefault();
+
+			// Reset editor
+			imageUploadEditor.resetEditor();
+		});
+
 		// Send
 		$(imageUploadEditor.conf.send_button).click(function() {
 			var selection = imageUploadEditor.jcrop_api.tellSelect();
@@ -197,8 +204,41 @@ var imageUploadEditor = {
 	},
 
 	initDom: function() {
-		// Add container in preview box
-		$(imageUploadEditor.conf.preview_block).append($('<div></div>').attr('id', 'preview-container'));
+		// Add empty image in original box
+		$(imageUploadEditor.conf.original_block).html($('<img />'));
+		// Add container in preview box with empty image
+		$(imageUploadEditor.conf.preview_block).html(
+			$('<div></div>').attr('id', 'preview-container').html(
+				$('<img />')
+			)
+		);
+		// Set rotation to 0 deg
+		$(imageUploadEditor.conf.preview_block).css('rotation', '0deg')
+			.css('-webkit-transform', 'rotate(0deg)')
+			.css('-moz-transform', 'rotate(0deg)');
+	},
+
+	resetEditor: function() {
+		// Reset dom
+		imageUploadEditor.initDom();
+
+		// Reset jCrop
+		imageUploadEditor.resetJcrop();
+
+		// Reset vars
+		imageUploadEditor.rotation = 0;
+		imageUploadEditor.image = null;
+		imageUploadEditor.bounds = {
+			x: null,
+			y: null
+		};
+
+		// Change text
+		$('#'+imageUploadEditor.conf.uploader.browse_button).html('Browse');
+		$(imageUploadEditor.conf.progress_text).html('');
+
+		// Callback event
+		imageUploadEditor.event.resetEditor();
 	},
 
 	updatePreview: function(coords) {
@@ -247,6 +287,7 @@ var imageUploadEditor = {
 		uploadComplete: function() {},
 		imageSaved: function() {
 			document.location.href = imageUploadEditor.image.file_uri;
-		}
+		},
+		resetEditor: function() {}
 	}
 };
