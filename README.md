@@ -20,6 +20,7 @@ Soon !
             reset_crop_button: '#reset-crop',
             rotate_button: '.rotate', // It's a class, many buttons
             send_button: '#send',
+            reset_editor_button: '#reset',
 
             original_block: '#original',
             preview_block: '#preview',
@@ -47,3 +48,17 @@ Soon !
             }
         });
     });
+
+## Event
+
+In order to use a event, you need bind a callback function on this event:
+    imageUploadEditor.bind('uploadComplete', function() {
+        // My code
+    });
+
+### List of events
+
+  - updatePreview: called when preview is updated
+  - uploadComplete: when upload of file has been finish
+  - imageSaved: after apply modifications on image
+  - resetEditor: called when you click on reset editor button
