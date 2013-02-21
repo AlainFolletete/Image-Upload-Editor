@@ -52,6 +52,7 @@ Soon !
 ## Event
 
 In order to use a event, you need bind a callback function on this event:
+
     imageUploadEditor.bind('uploadComplete', function() {
         // My code
     });
