@@ -127,7 +127,9 @@ var imageUploadEditor = {
 		return (this.jcrop_api != null);
 	},
 	resetJcrop: function() {
-		this.jcrop_api.destroy();
+		if (this.isJcropActive()) {
+			this.jcrop_api.destroy();
+		}
 	},
 
 	initTools: function() {
