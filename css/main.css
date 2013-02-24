@@ -14,15 +14,30 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-.image-box{
-	display: table-cell;
-	vertical-align: middle;
-	width: 300px;
-	height: 300px;
-	border: 1px solid #aaa;
-	text-align: center;
+body {
+	margin: auto;
+	width: 960px;
 }
-#original img{
-	max-width: 300px;
-	max-height: 300px;
+
+.block {
+	display: inline-block;
+}
+.row {
+	margin-bottom: 10px;
+}
+
+.options {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.options li {
+	display: inline;
+}
+.options li:after {
+	content: "|";
+	margin-left: 5px;
+}
+.options li.last:after {
+	content: "";
 }
