@@ -95,7 +95,7 @@ var imageUploadEditor = {
 			imageUploadEditor.initJcrop();
 
 			// Callback event
-			imageUploadEditor.event.uploadComplete();
+			imageUploadEditor.event.uploadComplete(response);
 		});
 
 		this.uploader.bind('QueueChanged', function(up) {
@@ -199,7 +199,7 @@ var imageUploadEditor = {
 				url: imageUploadEditor.conf.resize_url,
 				data: data
 			}).done(function( result ) {
-				imageUploadEditor.event.imageSaved();
+				imageUploadEditor.event.imageSaved(result);
 			});
 
 		});
@@ -286,8 +286,8 @@ var imageUploadEditor = {
 
 	event: {
 		updatePreview: function() {},
-		uploadComplete: function() {},
-		imageSaved: function() {
+		uploadComplete: function(result) {},
+		imageSaved: function(result) {
 			document.location.href = imageUploadEditor.image.file_uri;
 		},
 		resetEditor: function() {}
