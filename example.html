@@ -52,11 +52,11 @@
 			$(function() {
 				imageUploadEditor.init();
 
-				imageUploadEditor.bind('uploadComplete', function() {
+				imageUploadEditor.bind('uploadComplete', function(result) {
 					$('#result').show();
 				});
 
-				imageUploadEditor.bind('resetEditor', function() {
+				imageUploadEditor.bind('resetEditor', function(result) {
 					$('#result').hide();
 				});
 			});
