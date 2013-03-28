@@ -53,6 +53,12 @@ var imageUploadEditor = {
 			filters : [
 				{title : "Image files", extensions : "jpg,gif,png"}
 			]
+		},
+		txt: {
+			in_progress : 'In progress...',
+			transfer_complete : 'Transfer complete',
+			change_file : 'Change file',
+			select_file : 'Select file'
 		}
 	},
 
@@ -74,12 +80,12 @@ var imageUploadEditor = {
 		this.uploader = new plupload.Uploader(this.conf.uploader);
 
 		this.uploader.bind('UploadProgress', function(up, file) {
-			$(imageUploadEditor.conf.progress_text).html('In progress... '+file.percent+'%');
+			$(imageUploadEditor.conf.progress_text).html(imageUploadEditor.conf.txt.in_progress+' '+file.percent+'%');
 		});
 
 		this.uploader.bind('UploadComplete', function(up, file) {
-			$(imageUploadEditor.conf.progress_text).html('Transfer complete !');
-			$('#'+imageUploadEditor.conf.uploader.browse_button).html('Change file');
+			$(imageUploadEditor.conf.progress_text).html(imageUploadEditor.conf.txt.transfer_complete);
+			$('#'+imageUploadEditor.conf.uploader.browse_button).html(imageUploadEditor.conf.txt.change_file);
 		});
 
 		this.uploader.bind('FileUploaded', function(up, file, response) {
@@ -236,7 +242,7 @@ var imageUploadEditor = {
 		};
 
 		// Change text
-		$('#'+imageUploadEditor.conf.uploader.browse_button).html('Browse');
+		$('#'+imageUploadEditor.conf.uploader.browse_button).html(imageUploadEditor.conf.txt.select_file);
 		$(imageUploadEditor.conf.progress_text).html('');
 
 		// Callback event
