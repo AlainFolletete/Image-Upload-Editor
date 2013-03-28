@@ -45,6 +45,12 @@ Soon !
                 filters : [
                     {title : "Image files", extensions : "jpg,gif,png"}
                 ]
+            },
+            txt: {
+                in_progress : 'In progress...',
+                transfer_complete : 'Transfer complete',
+                change_file : 'Change file',
+                select_file : 'Select file'
             }
         });
     });
